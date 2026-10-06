@@ -1,6 +1,6 @@
 <!doctype html><html lang="ca"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex"><title>Admin · Quadern de classe</title>
-<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@600;700&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@600;700&family=Instrument+Sans:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
 <style>:root{--bg:#f6f5f1;--card:#fff;--ink:#1c1b19;--mut:#76736b;--line:#e4e1d9;--acc:#2f5d50;--acct:#fff;--warn:#b4531f}
 @media (prefers-color-scheme:dark){:root{--bg:#151513;--card:#1f1e1b;--ink:#efede6;--mut:#9a968b;--line:#34322d;--acc:#8fc7b4;--acct:#10201b;--warn:#e8925c}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 'Instrument Sans',system-ui,sans-serif}
@@ -29,6 +29,35 @@ input,select,textarea{background:var(--card);border:1px solid var(--line);border
 label{display:block;font-size:13px;color:var(--mut);margin:10px 0 3px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:480px){.grid2{grid-template-columns:1fr}}
 .note{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:10px 14px;font-size:14px;color:var(--mut);margin-bottom:14px}
+.tabs{display:flex;gap:4px;margin:0 0 16px;border-bottom:1px solid var(--line)}
+.tab{background:none;border:0;border-bottom:2px solid transparent;padding:8px 14px;cursor:pointer;font-weight:600;color:var(--mut)}
+.tab.on{color:var(--ink);border-color:var(--acc)}
+.cal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.cal-h b{font:600 18px 'Familjen Grotesk',system-ui,sans-serif;text-transform:capitalize}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal .dn{font-size:12px;color:var(--mut);text-align:center;padding:2px 0}
+.cell{aspect-ratio:1/1;min-height:44px;background:var(--card);border:1px solid var(--line);border-radius:10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:4px 2px;gap:3px;font-size:14px}
+.cell.out{visibility:hidden;cursor:default}.cell.today{border-color:var(--acc);font-weight:700}.cell.sel{background:var(--acc);color:var(--acct);border-color:var(--acc)}
+.dots{display:flex;gap:3px;flex-wrap:wrap;justify-content:center}.dot{width:7px;height:7px;border-radius:50%;background:var(--acc)}.dot.ex{background:var(--warn)}.cell.sel .dot{background:var(--acct)}
+.leg{display:flex;gap:14px;font-size:13px;color:var(--mut);margin:10px 0 14px}.leg i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--acc);margin-right:5px}.leg i.ex{background:var(--warn)}
+.back{background:none;border:0;color:var(--acc);cursor:pointer;padding:0;margin-bottom:10px;font-weight:600}
+.cd{display:inline-block;background:var(--warn);color:#fff;border-radius:99px;padding:2px 12px;font-size:14px;font-weight:600}
+.prog{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0 4px}.prog i{display:block;height:100%;background:var(--acc);transition:width .2s}
+.secnav{position:sticky;top:0;background:var(--bg);padding:8px 0;margin:0 0 10px;display:flex;gap:6px;overflow-x:auto;z-index:2}
+.secnav .chip{white-space:nowrap}.chip.done{opacity:.55;text-decoration:line-through}
+.sec h3{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.sec .ok{font:14px 'Instrument Sans',system-ui,sans-serif;font-weight:400;display:flex;gap:6px;align-items:center;color:var(--mut);white-space:nowrap}.sec .ok input{width:auto}
+.sec.isdone{opacity:.7}
+.rich p{margin:6px 0}.rich h4{margin:14px 0 4px;font:600 16px 'Familjen Grotesk',system-ui,sans-serif}.rich ul{margin:6px 0;padding-left:22px}
+.trow{padding:8px 0;border-top:1px solid var(--line)}.trow:first-child{border-top:0}.trow b{display:block}
+.quiz .trow{cursor:pointer}.quiz .def{display:none}.quiz .trow.open .def{display:block}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin-top:4px;display:block;overflow-x:auto;white-space:pre-wrap}
+details.q{border-top:1px solid var(--line);padding:8px 0}details.q:first-child{border-top:0}details.q summary{cursor:pointer;font-weight:600}details.q div{margin-top:6px;color:var(--ink)}
+.plan .row{padding:6px 0;border-top:1px solid var(--line)}.plan .row:first-of-type{border-top:0}.plan .row b{color:var(--acc)}
+.sb{border:1px solid var(--line);border-radius:12px;padding:10px;margin:8px 0;background:var(--bg)}
+.sb .hd{display:flex;gap:6px;margin-bottom:6px}.sb .hd select{flex:0 0 190px;width:auto}.sb .hd input{flex:1}
+.sb textarea{font-size:14px}
+a.lnk{color:var(--acc);font-weight:600;cursor:pointer;text-decoration:none}
 </style></head><body><div class="wrap">
 <h1>Admin</h1><p class="sub">Prepara publicacions aquí i després puja el fitxer <b>data.json</b> a GitHub. Els companys només veuen la pàgina principal.</p>
 <div class="note" id="steps"><b>Com publicar:</b> 1) afegeix o edita coses aquí, 2) prem «Descarregar data.json», 3) a GitHub, Add file &gt; Upload files, puja'l (substitueix l'anterior) i Commit. En ~1 minut es veu a la web. Per a PDFs o imatges: puja'ls igual a GitHub i posa a «Enllaç o fitxer» el nom (ex. <code>fitxers/tema3.pdf</code>) o enganxa un enllaç (Drive, etc.).</div>
@@ -61,40 +90,77 @@ function fmtDate(s){if(!s)return '';var d=new Date(s+'T00:00:00');return d.toLoc
 function fmtAt(ts){return new Date(ts).toLocaleDateString('ca-ES',{day:'numeric',month:'short',year:'numeric'});}
 function today(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
 function isImg(u){return /\.(png|jpe?g|gif|webp|svg)(\?.*)?$/i.test(u||'');}
+var SEC={
+ resum:{n:'Resum',ph:'Idees principals. Pots fer servir "# Títol" per a subtítols, "- punt" per a llistes i enllaços.'},
+ conceptes:{n:'Conceptes clau',ph:'Un per línia, així:\nTerme :: definició'},
+ formules:{n:'Fórmules',ph:'Una per línia, així:\nNom :: fórmula'},
+ exemples:{n:'Exemples resolts',ph:'Problemes o exemples amb el pas a pas. Admet "# Títol" i "- punt".'},
+ errors:{n:'Errors típics',ph:'- Error freqüent i com evitar-lo'},
+ practica:{n:'Preguntes de pràctica',ph:'Una per línia, així:\nPregunta :: resposta'},
+ recursos:{n:'Recursos',ph:'Un per línia: Nom :: enllaç (o només l\'enllaç o fitxer, ex. fitxers/tema3.pdf)'},
+ lliure:{n:'Apartat lliure',ph:'Text lliure'}
+};
+function rich(txt){var f=h('div',{class:'rich'}),ul=null;
+ String(txt||'').split('\n').forEach(function(l){var t=l.replace(/\s+$/,'');
+  if(/^\s*[-*] /.test(t)){if(!ul){ul=h('ul');f.appendChild(ul);}ul.appendChild(h('li',{},linkify(t.replace(/^\s*[-*] /,''))));return;}
+  ul=null;if(!t.trim())return;
+  if(/^# /.test(t)){f.appendChild(h('h4',{text:t.slice(2)}));return;}
+  f.appendChild(h('p',{},linkify(t)));});return f;}
+function pairs(txt){return String(txt||'').split('\n').map(function(l){return l.trim();}).filter(Boolean).map(function(l){var i=l.indexOf('::');return i<0?{a:l,b:''}:{a:l.slice(0,i).trim(),b:l.slice(i+2).trim()};});}
+function daysTo(due){var a=new Date(today()+'T00:00:00'),b=new Date(due+'T00:00:00');return Math.round((b-a)/86400000);}
+function pad(n){return ('0'+n).slice(-2);}
 
 var KEY='quadern.feed.admin',DATA={title:'Quadern de classe',subtitle:'',posts:[]},editing=null,dirty=false;
 function save(){dirty=true;try{localStorage.setItem(KEY,JSON.stringify(DATA));}catch(e){}stat();}
 function stat(){document.getElementById('stat').textContent=DATA.posts.length+' publicacions'+(dirty?' · hi ha canvis sense descarregar':'');}
 function opts(sel){var o=[h('option',{value:'',text:'(General)'})];[1,2].forEach(function(c){CAT.filter(function(x){return x.course===c;}).forEach(function(x){var e=h('option',{value:x.id,text:c+'r · '+x.name});if(sel===x.id)e.selected=true;o.push(e);});});return o;}
+function uid(){return 's'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
 function form(){
  var p=editing?DATA.posts.filter(function(x){return x.id===editing;})[0]:{type:'avis',subj:'',title:'',body:'',url:'',due:''};
+ var secs=(p.sections||[]).map(function(s){return {id:s.id||uid(),kind:s.kind,title:s.title||'',body:s.body||''};});
  var f=document.getElementById('form');f.innerHTML='';
  var ty=h('select',{id:'f_t'},Object.keys(TYPES).map(function(k){var e=h('option',{value:k,text:TYPES[k]});if(p.type===k)e.selected=true;return e;}));
  var sj=h('select',{id:'f_s'},opts(p.subj));
  var ti=h('input',{id:'f_ti',placeholder:'Títol',value:p.title||''});
- var bo=h('textarea',{id:'f_b',rows:'5',placeholder:'Text (opcional)'});bo.value=p.body||'';
+ var bo=h('textarea',{id:'f_b',rows:'4',placeholder:'Text (opcional). Per a un examen: què cau, format, durada...'});bo.value=p.body||'';
  var ur=h('input',{id:'f_u',placeholder:'fitxers/tema3.pdf o https://...',value:p.url||''});
  var du=h('input',{id:'f_d',type:'date',value:p.due||''});
  var pi=h('input',{id:'f_p',type:'checkbox',style:'width:auto'});pi.checked=!!p.pinned;
- var dw=h('div',{id:'f_dw'},h('label',{text:'Data (per a deures i exàmens)'}),du);
- function tg(){dw.style.display=DATED[ty.value]?'':'none';}ty.onchange=tg;
+ var dw=h('div',{id:'f_dw'},h('label',{text:'Data (apareix al calendari)'}),du);
+ var sw=h('div',{id:'f_sw'});
+ function drawSecs(){sw.innerHTML='';
+  sw.appendChild(h('label',{text:'Apartats d\'apunts de l\'examen (tots opcionals, afegeix només els que vulguis)'}));
+  secs.forEach(function(s,i){
+   var ks=h('select',{},Object.keys(SEC).map(function(k){var e=h('option',{value:k,text:SEC[k].n});if(s.kind===k)e.selected=true;return e;}));
+   var st=h('input',{placeholder:'Títol (per defecte: '+SEC[s.kind].n+')',value:s.title});
+   var sb=h('textarea',{rows:'5',placeholder:SEC[s.kind].ph});sb.value=s.body;
+   ks.onchange=function(){s.kind=ks.value;sb.placeholder=SEC[s.kind].ph;st.placeholder='Títol (per defecte: '+SEC[s.kind].n+')';};
+   st.oninput=function(){s.title=st.value;};sb.oninput=function(){s.body=sb.value;};
+   sw.appendChild(h('div',{class:'sb'},h('div',{class:'hd'},ks,st,
+    h('button',{class:'btn ghost sm',text:'↑',title:'Pujar',onclick:function(){if(i>0){secs.splice(i-1,0,secs.splice(i,1)[0]);drawSecs();}}}),
+    h('button',{class:'btn ghost sm',text:'↓',title:'Baixar',onclick:function(){if(i<secs.length-1){secs.splice(i+1,0,secs.splice(i,1)[0]);drawSecs();}}}),
+    h('button',{class:'btn ghost sm',text:'✕',title:'Esborrar apartat',onclick:function(){secs.splice(i,1);drawSecs();}})),sb));});
+  var add=h('div',{class:'chips'},Object.keys(SEC).map(function(k){return h('button',{class:'chip',text:'+ '+SEC[k].n,onclick:function(){secs.push({id:uid(),kind:k,title:'',body:''});drawSecs();}});}));
+  sw.appendChild(add);}
+ function tg(){dw.style.display=DATED[ty.value]?'':'none';sw.style.display=ty.value==='examen'?'':'none';}ty.onchange=tg;
  f.appendChild(h('h3',{text:editing?'Editar publicació':'Nova publicació',style:'margin-top:0'}));
  f.appendChild(h('div',{class:'grid2'},h('div',{},h('label',{text:'Tipus'}),ty),h('div',{},h('label',{text:'Assignatura'}),sj)));
  f.appendChild(h('label',{text:'Títol'}));f.appendChild(ti);f.appendChild(h('label',{text:'Text'}));f.appendChild(bo);
- f.appendChild(h('label',{text:'Enllaç o fitxer (opcional)'}));f.appendChild(ur);f.appendChild(dw);
+ f.appendChild(h('label',{text:'Enllaç o fitxer (opcional)'}));f.appendChild(ur);f.appendChild(dw);f.appendChild(sw);
  f.appendChild(h('label',{style:'display:flex;gap:8px;align-items:center'},pi,'Fixar a dalt'));
  f.appendChild(h('div',{class:'bar',style:'margin-top:14px'},
   h('button',{class:'btn',text:editing?'Desar canvis':'Afegir',onclick:function(){
    if(!ti.value.trim()&&!bo.value.trim()){ti.focus();return;}
    var o={type:ty.value,subj:sj.value,title:ti.value.trim(),body:bo.value.trim(),url:ur.value.trim(),due:DATED[ty.value]?du.value:'',pinned:pi.checked};
-   if(editing){var q=DATA.posts.filter(function(x){return x.id===editing;})[0];for(var k in o)q[k]=o[k];}
-   else{o.id='p'+Date.now();o.at=Date.now();DATA.posts.push(o);}
+   var ss=ty.value==='examen'?secs.filter(function(s){return s.title.trim()||s.body.trim();}).map(function(s){return {id:s.id,kind:s.kind,title:s.title.trim(),body:s.body.replace(/\s+$/,'')};}):[];
+   if(editing){var q=DATA.posts.filter(function(x){return x.id===editing;})[0];for(var k in o)q[k]=o[k];if(ss.length)q.sections=ss;else delete q.sections;}
+   else{o.id='p'+Date.now();o.at=Date.now();if(ss.length)o.sections=ss;DATA.posts.push(o);}
    editing=null;save();form();list();}}),
   editing&&h('button',{class:'btn ghost',text:'Cancel·lar',onclick:function(){editing=null;form();}})));
- tg();}
+ drawSecs();tg();}
 function list(){var l=document.getElementById('list');l.innerHTML='';
  DATA.posts.slice().sort(function(a,b){return b.at-a.at;}).forEach(function(p){var s=SN[p.subj];
-  l.appendChild(h('div',{class:'card'},h('div',{class:'meta'},h('span',{class:'tag',text:TYPES[p.type]}),s&&h('span',{text:s.name}),h('span',{text:fmtAt(p.at)}),p.due&&h('span',{text:fmtDate(p.due)})),
+  l.appendChild(h('div',{class:'card'},h('div',{class:'meta'},h('span',{class:'tag',text:TYPES[p.type]}),s&&h('span',{text:s.name}),h('span',{text:fmtAt(p.at)}),p.due&&h('span',{text:fmtDate(p.due)}),p.sections&&p.sections.length&&h('span',{text:p.sections.length+' apartats'})),
    h('h3',{text:p.title||'(sense títol)'}),
    h('div',{class:'bar'},h('button',{class:'btn ghost sm',text:'Editar',onclick:function(){editing=p.id;form();window.scrollTo(0,0);}}),
     h('button',{class:'btn ghost sm',text:'Esborrar',onclick:function(){if(confirm('Esborrar aquesta publicació?')){DATA.posts=DATA.posts.filter(function(x){return x!==p;});save();list();}}}))));});}
