@@ -3,13 +3,18 @@
  "subtitle": "Apunts, deures i avisos de la classe.",
  "posts": [
   {
-   "id": "p1",
    "type": "avis",
    "subj": "",
-   "title": "Benvinguts!",
-   "body": "Aquí aniré penjant apunts, resums i dates importants. Guarda aquesta pàgina als preferits.",
+   "title": "Excursió",
+   "body": "",
    "url": "",
    "due": "",
+   "pinned": false,
+   "id": "p1791312977178",
+   "at": 1791312977178
+  }
+ ]
+}
    "pinned": true,
    "at": 1791312447466
   }
