@@ -1,0 +1,17 @@
+{
+ "title": "Quadern de classe",
+ "subtitle": "Apunts, deures i avisos de la classe.",
+ "posts": [
+  {
+   "id": "p1",
+   "type": "avis",
+   "subj": "",
+   "title": "Benvinguts!",
+   "body": "Aquí aniré penjant apunts, resums i dates importants. Guarda aquesta pàgina als preferits.",
+   "url": "",
+   "due": "",
+   "pinned": true,
+   "at": 1791312447466
+  }
+ ]
+}
