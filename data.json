@@ -12,11 +12,17 @@
    "pinned": false,
    "id": "p1791312977178",
    "at": 1791312977178
-  }
- ]
-}
-   "pinned": true,
-   "at": 1791312447466
+  },
+  {
+   "type": "examen",
+   "subj": "cas1",
+   "title": "Caste",
+   "body": "",
+   "url": "",
+   "due": "2026-10-07",
+   "pinned": false,
+   "id": "p1791313202139",
+   "at": 1791313202139
   }
  ]
 }
