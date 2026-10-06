@@ -1,28 +1,44 @@
+
 {
  "title": "Quadern de classe",
  "subtitle": "Apunts, deures i avisos de la classe.",
  "posts": [
   {
-   "type": "avis",
+   "type": "examen",
    "subj": "",
-   "title": "Excursió",
+   "title": "asdasd",
    "body": "",
    "url": "",
    "due": "",
    "pinned": false,
-   "id": "p1791312977178",
-   "at": 1791312977178
-  },
-  {
-   "type": "examen",
-   "subj": "cas1",
-   "title": "Caste",
-   "body": "",
-   "url": "",
-   "due": "2026-10-07",
-   "pinned": false,
-   "id": "p1791313202139",
-   "at": 1791313202139
+   "id": "p1791313845730",
+   "at": 1791313845730,
+   "sections": [
+    {
+     "id": "smux1zoguhpxu",
+     "kind": "resum",
+     "title": "sf",
+     "body": "asdfa"
+    },
+    {
+     "id": "smux1zqmi5b5f",
+     "kind": "formules",
+     "title": "SAd",
+     "body": "Ac"
+    },
+    {
+     "id": "smux1zzn5m4pn",
+     "kind": "lliure",
+     "title": "dasd",
+     "body": "asda"
+    },
+    {
+     "id": "smux2046s1qpj",
+     "kind": "practica",
+     "title": "sad",
+     "body": "asdasd"
+    }
+   ]
   }
  ]
 }
